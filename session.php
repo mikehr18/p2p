@@ -7,9 +7,17 @@ session_start();// Iniciando Sesion
 // Guardando la sesion
 $user_check=$_SESSION['login_user_sys'];
 // SQL Query para completar la informacion del usuario
-$ses_sql=mysqli_query($con, "select email from login where email='$user_check'");
+$ses_sql=mysqli_query($con, "select email, id from login where email='$user_check'");
 $row = mysqli_fetch_assoc($ses_sql);
+
 $login_session =$row['email'];
+$_SESSION['username']= $login_session;
+$_SESSION['id']= $row['id'];
+$id_login = $row['id'];
+
+$ses_sqll=mysqli_query($con, "UPDATE archivos set activo=1 where id_login='$id_login'");
+$row = mysqli_fetch_assoc($ses_sqll);
+
 if(!isset($login_session)){
 mysqli_close($con); // Cerrando la conexion
 header('Location: index.php'); // Redirecciona a la pagina de inicio

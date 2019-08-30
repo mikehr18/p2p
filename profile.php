@@ -42,7 +42,7 @@ include('session.php');
 			            <ul></ul>
 			        </div>
 
-			        <script>
+			        <script> 
 			            var insertar_en = document.querySelector("#archivos ul");
 			            file_in = document.querySelector("#files")
 			            file_in.onchange = function(e){
