@@ -22,7 +22,6 @@ class Funciones
             // output data of each row
             while($row = mysqli_fetch_assoc($datos)) {
                 $archivo = ['nombre' => $row['archivos.nombre'], 'propietario' => $row['login.email'], 'ip' => $row['login.ip']];
-                $archivo = ['nombre' => $row['nombre'], 'propietario' => $row['email'], 'ip' => $row['ip']];
                 array_push($lista_archivos, $archivo);
             }
         }
