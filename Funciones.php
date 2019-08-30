@@ -1,5 +1,5 @@
 <?php
-include 'config/conexion.php';
+include 'config/db.php';
 class Funciones
 {
     public function __construct()
