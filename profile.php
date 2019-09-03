@@ -36,11 +36,7 @@ include('session.php');
 
 
 
-			 <input type="file" id="files" multiple>
-
-			        <div id="archivos">
-			            <ul></ul>
-			        </div>
+			 
 
 			        <script> 
 			            var insertar_en = document.querySelector("#archivos ul");

@@ -13,16 +13,22 @@
     <script src="js/jquery-3.4.1.min.js"></script>
     <script>
         //alert('Hola');
+      $(document).ready(function(){
+
+       setTimeout(() => {
         $.ajax({
             type: "GET",
             url: "lista_archivos.php",
             dataType: "html",
-            async: false,
             success: function (data) {
-                result = data;
+        console.log(data);
             }
         });
-        console.log(result);
+            
+        }, 5000);
+
+      });
+      
     </script>
 </body>
 
