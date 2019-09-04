@@ -10,7 +10,7 @@ $con = @mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
         }
 
 $lista_archivos = array();
-        $query = "SELECT login.email, login.ip, archivos.nombre from archivos inner join login on login.id = archivos.id_login;";
+        $query = "SELECT login.email, login.ip, archivos.nombre from archivos inner join login on login.id = archivos.id_login where login.activo = 1;";
         $datos = mysqli_query($con, $query);
         if (mysqli_num_rows($datos) > 0) {
             // output data of each row
