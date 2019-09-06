@@ -1,5 +1,5 @@
 <?php
-include('session.php');
+include 'session.php';
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -25,32 +25,34 @@ include('session.php');
 		<div class="login-main wthree">
 			<div class="login">
 			<h3>Bienvenid@ al sistema  <i><?php echo $login_session; ?></i></h3>
-	<?php		
-	if (!empty($_SERVER['HTTP_CLIENT_IP'])) { $ip = $_SERVER['HTTP_CLIENT_IP']; } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) { $ip = $_SERVER['HTTP_X_FORWARDED_FOR']; } else { $ip = $_SERVER['REMOTE_ADDR']; }
-	echo $ip; ?>
+			<a href="archivos.html"><h4>Ver archivos disponibles</h4></a>
+	<?php
+if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+    $ip = $_SERVER['HTTP_CLIENT_IP'];
+} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+} else {
+    $ip = $_SERVER['REMOTE_ADDR'];
+}
+echo $ip;?>
 			<form action="file.php" method="post" enctype="multipart/form-data">
             <input type="file" name="archivo" id="archivo">
             <input type="submit" value="Subir archivo">
 
         </form>
+		<script>
+			var insertar_en = document.querySelector("#archivos ul");
+			file_in = document.querySelector("#files")
+			file_in.onchange = function(e){
+				var files = e.target.files;
+				for(var i=0,f;f= files[i];++i){
+					var archivo = document.createElement("li");
+					archivo.innerHTML = f.name + " - (<b>" + f.type + "</b>) ->" + f.size;insertar_en.appendChild(archivo);
+				}
+			}
 
 
-
-			 
-
-			        <script> 
-			            var insertar_en = document.querySelector("#archivos ul");
-			            file_in = document.querySelector("#files")
-			            file_in.onchange = function(e){
-			                var files = e.target.files;
-			                for(var i=0,f;f= files[i];++i){
-			                    var archivo = document.createElement("li");
-			                    archivo.innerHTML = f.name + " - (<b>" + f.type + "</b>) ->" + f.size;insertar_en.appendChild(archivo);
-			                }
-			            }
-
-
-			        </script>
+		</script>
 
 
 			<div class="clear"> </div>

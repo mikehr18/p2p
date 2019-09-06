@@ -17,6 +17,8 @@ $id_login = $row['id'];
 
 $ses_sqll=mysqli_query($con, "UPDATE archivos set activo=1 where id_login='$id_login'");
 $row = mysqli_fetch_assoc($ses_sqll);
+$ses_sqll=mysqli_query($con, "UPDATE login set activo=1 where id='$id_login'");
+$row = mysqli_fetch_assoc($ses_sqll);
 
 if(!isset($login_session)){
 mysqli_close($con); // Cerrando la conexion

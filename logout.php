@@ -7,6 +7,8 @@ include("config/conexion.php");
 
 $ses_sqll=mysqli_query($con, "UPDATE archivos set activo=0 where id_login='".$username."'");
 $row = mysqli_fetch_assoc($ses_sqll);
+$ses_sqll=mysqli_query($con, "UPDATE login set activo=0 where id='".$username."'");
+$row = mysqli_fetch_assoc($ses_sqll);
 session_start();
 if(session_destroy()) // Destruye todas las sesiones
 {

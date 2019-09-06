@@ -26,4 +26,25 @@ $query=mysqli_query($con,$sql);
   
   }
 
-?>
+?><!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+  <title>Lista de archivos</title>
+</head>
+
+<body>
+  <div class="container">
+    <a href="profile.php"><h4>Inicio</h4></a>
+		<a href="archivos.html"><h4>Ver archivos disponibles</h4></a>
+  </div>
+  <script src="js/jquery-3.4.1.min.js"></script>
+  
+</body>
+
+</html>

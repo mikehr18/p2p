@@ -2,70 +2,60 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <title>Lista de archivos</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+  <title>Lista de archivos</title>
 </head>
 
 <body>
-    <h1>Lista de archivos</h1>
-    <table class="table">
-            <thead class="thead-light">
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-            </tbody>
-          </table>
-    <h5 id="demo"></h5>
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            obtener_lista_archivos();
-        });
+  <h1>Lista de archivos</h1>
+  <div class="container">
+    <a href="profile.php">
+      <h4>Inicio</h4>
+    </a>
+    <table class="table table-striped">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Archivo</th>
+          <th scope="col">Propietario</th>
+          <th scope="col">Desde</th>
+        </tr>
+      </thead>
+      <tbody id="contenido_archivos">
+      </tbody>
+    </table>
+  </div>
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      obtener_lista_archivos();
+    });
 
-        function obtener_lista_archivos() {
-            $.ajax({
-                url: 'lista_archivos.php',
-                type: 'POST',
-                dataType: 'json',
-                success: function (lista_archivos) {
-                    tabla_archivos(lista_archivos);
-                }
-            });
-            setTimeout(obtener_lista_archivos, 5000);
+    function obtener_lista_archivos() {
+      $.ajax({
+        url: 'lista_archivos.php',
+        type: 'POST',
+        dataType: 'json',
+        success: function (lista_archivos) {
+          tabla_archivos(lista_archivos);
         }
+      });
+      setTimeout(obtener_lista_archivos, 5000);
+    }
 
-        function tabla_archivos(lista_archivos) {
-            lista_archivos.forEach(archivo => {
-
-            });
-        }
-    </script>
+    function tabla_archivos(lista_archivos) {
+      $('#contenido_archivos').text("");
+      lista_archivos.forEach(archivo => {
+        var tupla = '<tr><td><a href="subidas/' + archivo.nombre + '">' + archivo.nombre + '</a></td>';
+        tupla += "<td>" + archivo.propietario + "</td>";
+        tupla += "<td>" + archivo.ip + "</td></tr>";
+        $('#contenido_archivos').append(tupla);
+      });
+    }
+  </script>
 </body>
 
 </html>
